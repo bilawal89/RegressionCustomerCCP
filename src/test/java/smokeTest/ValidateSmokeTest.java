@@ -1502,7 +1502,7 @@ public class ValidateSmokeTest extends base {
 						}
 		
 		
-		@Test(priority = 23, dependsOnMethods = { "ValidateLogin" })
+		@Test(priority = 23, dependsOnMethods = { "ValidateLogin" },enabled=false)
 
 		public void ValidateInvaliduser3Times() throws InterruptedException, AWTException {
 			
@@ -1514,7 +1514,7 @@ public class ValidateSmokeTest extends base {
 			
 			try {
 				for(int a = 0 ; a>=3 ;a++)
-				{
+			{
 			lp.getusername().clear();
 			lp.getusername().sendKeys("ccptestmain@arpatech.com");
 			Username_present = true;
@@ -1542,7 +1542,7 @@ public class ValidateSmokeTest extends base {
 			Assert.assertEquals(lp.getIncorrect_Credentials().getText(), "You are locked for 15 minutes because of multiple failed attempts, please contact us for assistance or try again after 15 minutes","USER LOCK MESSAGE IS NOT APPEARING WHEN ENTERING CREDENTIALS INVALID FOR 3 TIMES");
 	}
 		
-		@Test(priority = 24, dependsOnMethods = { "ValidateLogin" })
+		@Test(priority = 24, dependsOnMethods = { "ValidateLogin" },enabled=false)
 
 		public void ValidateLockedUser() throws InterruptedException, AWTException {
 			
@@ -1553,7 +1553,7 @@ public class ValidateSmokeTest extends base {
 			boolean Login_present = false;
 			
 			try {
-				lp.getusername().clear();
+			lp.getusername().clear();
 			lp.getusername().sendKeys("ccptestmain@arpatech.com");
 			Username_present = true;
 			lp.getusername().clear();
@@ -1561,6 +1561,27 @@ public class ValidateSmokeTest extends base {
 			password_present = true;
 			lp.getloginbtn().click();
 			Login_present = true;
+			Thread.sleep(5000);
+			
+			lp.getusername().clear();
+			lp.getusername().sendKeys("ccptestmain@arpatech.com");
+			//Username_present = true;
+			lp.getusername().clear();
+			lp.getpassword().sendKeys("Connection1234");
+			//password_present = true;
+			lp.getloginbtn().click();
+			//Login_present = true;
+			Thread.sleep(5000);
+			
+			
+			lp.getusername().clear();
+			lp.getusername().sendKeys("ccptestmain@arpatech.com");
+			//Username_present = true;
+			lp.getusername().clear();
+			lp.getpassword().sendKeys("Connection1234");
+			//password_present = true;
+			lp.getloginbtn().click();
+			//Login_present = true;
 			Thread.sleep(5000);
 			
 				Log.info("From the Customer Portal user Login page , User is entering the correct username but wrong password");
